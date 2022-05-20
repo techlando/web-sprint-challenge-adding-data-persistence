@@ -1,8 +1,18 @@
 const router = require('express').Router()
+const Resources = require('./model')
 
-router.use('*', (req, res, next) => {
-    res.json({ api: 'up' })
-})
+// router.get('/', (res, req) => {
+//     // Resources.find()
+//     //     .then(resource => {
+//     //         res.json(resource)
+//     //     })
+   
+// })
+// router.post('/', (res, req) => {
+    
+// })
+
+
 
 router.use((err, req, res, next) => {
     res.status(500).json({
