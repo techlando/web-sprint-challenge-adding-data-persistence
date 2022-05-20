@@ -1,10 +1,22 @@
 const router = require('express').Router()
+const Projects = require('./model')
 
-router.get('/', (res, req) => {
-
+router.get('/', async (req, res, next) => {
+    try {
+        const projects = await Projects.getAll()
+       
+        res.json(projects)
+    } catch(err) {
+        next(err)
+    }
 })
-router.post('/', (res, req) => {
-    
+router.post('/', async (req, res, next) => {
+    try {
+        const project = await Projects.create(req.body) 
+        res.json(project)
+    } catch(err) {
+        next(err)
+    }
 })
 
 

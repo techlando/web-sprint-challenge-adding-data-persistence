@@ -1,6 +1,6 @@
 const  projects = [
-    { project_name: 'Build Chiken Coop' },
-    { project_name: 'Build a NFT' },
+    { project_name: 'Build Chiken Coop', project_description:"harvest eggs always" },
+    { project_name: 'Build a NFT', project_description: "NFT is the new thing" },
     { project_name: 'Plant a garden' }
 ]
 const resources = [
