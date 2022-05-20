@@ -1,16 +1,22 @@
 const router = require('express').Router()
 const Resources = require('./model')
 
-// router.get('/', (res, req) => {
-//     // Resources.find()
-//     //     .then(resource => {
-//     //         res.json(resource)
-//     //     })
-   
-// })
-// router.post('/', (res, req) => {
-    
-// })
+router.get('/', async (req, res) => {
+    try {
+        const resource = await Resources.getAll() 
+        res.json(resource)
+    } catch(err) {
+        next(err)
+    }
+})
+router.post('/', async (req, res) => {
+    try {
+        const resource = await Resources.create(req.body) 
+        res.json(resource)
+    } catch(err) {
+        next(err)
+    }
+})
 
 
 
