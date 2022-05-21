@@ -1,5 +1,6 @@
 const router = require('express').Router()
 const Resources = require('./model')
+const {checkResourceName } = require('./resources-middleware')
 
 router.get('/', async (req, res) => {
     try {
@@ -9,7 +10,7 @@ router.get('/', async (req, res) => {
         next(err)
     }
 })
-router.post('/', async (req, res) => {
+router.post('/',checkResourceName, async (req, res) => {
     try {
         const resource = await Resources.create(req.body) 
         res.json(resource)

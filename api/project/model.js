@@ -1,12 +1,20 @@
 const db = require('../../data/dbConfig');
 
-const getAll = () => {
-return db('projects').orderBy('project_id')
+const getAll = async () => {
+    return db('projects').orderBy('project_id')
+   
+
 }
 
-const getById = (project_id) => {
-    return db('projects').where('project_id', project_id).first()
-      
+const getById = async (project_id) => {
+    const rows =  await db('projects').where('project_id', project_id).first()
+    const result = {
+        project_name: rows.project_name,
+        project_description: rows.project_description,
+        project_completed: rows.project_completed === 0 ? false : true
+        
+    }
+   return result
     
     }
 
