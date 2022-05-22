@@ -3,7 +3,7 @@ const Tasks = require('./model');
 const { checkTaskDesc, checkProjId, checkIfProjId } = require('./tasks_middleware')
 
 
-router.get('/', async (req, res) => {
+router.get('/', async (req, res, next) => {
     try {
         const task = await Tasks.getAll() 
         res.json(task)

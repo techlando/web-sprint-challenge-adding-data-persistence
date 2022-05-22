@@ -1,7 +1,19 @@
 const db = require('../../data/dbConfig');
 
 const getAll = async () => {
-    return db('projects').orderBy('project_id')
+    const projects = await db('projects').orderBy('project_id')
+
+    const result = []
+    projects.forEach(project => {
+      result.push({
+       project_name: project.project_name,
+       project_description: project.project_description,
+       project_completed: project.project_completed === 0 ? false : true
+       })
+         
+    })
+  
+    return result
    
 
 }
