@@ -18,26 +18,7 @@ const checkProjId = (req, res, next) => {
 
 }
 
-const checkIfProjId = async (req, res, next) => {
-    try {
-        const existing = await db('tasks')
-        .where('project_id', req.body.project_id)
-        .first()
-        if(!existing)
-        { next({  status: 404, message: 'project_id doesnt exist'})
-    } else {
-        next()
-    }
-    } catch (err) {
-        next(err)
-    }
-}
-
-
-
-
 module.exports = {
     checkTaskDesc,
     checkProjId,
-    checkIfProjId
 }

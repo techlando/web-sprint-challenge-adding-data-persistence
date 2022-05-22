@@ -1,6 +1,6 @@
 const router = require('express').Router()
 const Resources = require('./model')
-const {checkResourceName } = require('./resources-middleware')
+const { checkResourceName } = require('./resources-middleware')
 
 router.get('/', async (req, res) => {
     try {
@@ -18,8 +18,6 @@ router.post('/',checkResourceName, async (req, res) => {
         next(err)
     }
 })
-
-
 
 router.use((err, req, res, next) => {
     res.status(500).json({

@@ -4,6 +4,7 @@ const getAll = async () => {
     const projects = await db('projects').orderBy('project_id')
 
     const result = []
+
     projects.forEach(project => {
       result.push({
        project_name: project.project_name,
@@ -15,7 +16,6 @@ const getAll = async () => {
   
     return result
    
-
 }
 
 const getById = async (project_id) => {

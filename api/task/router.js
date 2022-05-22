@@ -1,6 +1,6 @@
 const router = require('express').Router()
 const Tasks = require('./model');
-const { checkTaskDesc, checkProjId, checkIfProjId } = require('./tasks_middleware')
+const { checkTaskDesc, checkProjId } = require('./tasks_middleware')
 
 
 router.get('/', async (req, res, next) => {
@@ -11,8 +11,8 @@ router.get('/', async (req, res, next) => {
         next(err)
     }
 })
+
 router.post('/', checkTaskDesc, checkProjId, async (req, res, next) => {
-    
     try {
         const task = await Tasks.create(req.body) 
         res.json(task)
@@ -21,7 +21,6 @@ router.post('/', checkTaskDesc, checkProjId, async (req, res, next) => {
     }
 
 })
-
 
 router.use((err, req, res, next) => {
     res.status(500).json({

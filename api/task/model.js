@@ -32,13 +32,9 @@ const getById = async (task_id) => {
     
     }
           
-        
-    
-    
 const create = (tasks) => {
     return db('tasks').insert(tasks).then(([task_id]) => getById(task_id))
     }
-
 
 module.exports = {
     getAll, getById, create
